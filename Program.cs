@@ -14,8 +14,8 @@ var iniString = LoadIniFile("testData.ini");
 // Количество итераций
 int numberOfIterations = 10000;
 
-// NewtonSoft сериалайзер
-JsonSerializer serializer = new();
+// Прогрев библиотеки NewtonSoft, т.к. первое обращение занмает больше времени чем последующие
+JsonConvert.SerializeObject(instance);
 
 // Замер времени рефлексии
 // Единичная ериализация
