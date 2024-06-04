@@ -126,9 +126,9 @@ T DeserializeFromIni<T>(string csvData) where T : new()
 // Загрузка из файла
 static string LoadIniFile(string filePath)
 {
-    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new();
 
-    using (StreamReader reader = new StreamReader(filePath))
+    using (StreamReader reader = new(filePath))
     {
         string line = reader.ReadLine();
         while (line != null)
@@ -140,4 +140,3 @@ static string LoadIniFile(string filePath)
 
     return sb.ToString();
 }
-
