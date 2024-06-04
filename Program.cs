@@ -31,13 +31,13 @@ for (int i = 0; i < numberOfIterations; i++)
     _ = SerializeProperties(instance);
 }
 stopwatch.Stop();
-long batchSerializationTime = stopwatch.ElapsedMilliseconds;
+long multiSerializationTime = stopwatch.ElapsedMilliseconds;
 
 // Единичная десериализация
 stopwatch.Restart();
 F deserializedInstance = DeserializeFromIni<F>(iniString);
 stopwatch.Stop();
-long singleDerializationTime = stopwatch.ElapsedMilliseconds;
+long singleDeserializationTime = stopwatch.ElapsedMilliseconds;
 
 // Множественная десериализация
 stopwatch.Restart();
@@ -46,7 +46,7 @@ for (int i = 0; i < numberOfIterations; i++)
     _ = DeserializeFromIni<F>(iniString);
 }
 stopwatch.Stop();
-long multiDerializationTime = stopwatch.ElapsedMilliseconds;
+long multiDeserializationTime = stopwatch.ElapsedMilliseconds;
 
 // Замер времени стандартных механизмов (JSON)
 // Единичная сериализация
@@ -82,10 +82,10 @@ long multiJsonDeSerializationTime = stopwatch.ElapsedMilliseconds;
 // Вывод на экран
 stopwatch.Restart();
 Console.WriteLine("Serialized String: " + serializedString);
-Console.WriteLine($"Serialization Time 1/{numberOfIterations}: {singleSerializationTime}/{batchSerializationTime} ms");
+Console.WriteLine($"Serialization Time 1/{numberOfIterations}: {singleSerializationTime}/{multiSerializationTime} ms");
 
 Console.WriteLine("Deserializing String: " + serializedString);
-Console.WriteLine($"Serialization Time 1/{numberOfIterations}: {singleDerializationTime}/{multiDerializationTime} ms");
+Console.WriteLine($"Serialization Time 1/{numberOfIterations}: {singleDeserializationTime}/{multiDeserializationTime} ms");
 
 Console.WriteLine("JSON Serialized String: " + serializedString);
 Console.WriteLine($"JSON Serialization Time 1/{numberOfIterations}: {singleJsonSerializationTime}/{multiJsonSerializationTime} ms");
